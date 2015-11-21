@@ -2,11 +2,15 @@ package jp.kfujine.oadc;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -17,6 +21,8 @@ public class DanceActivity extends Activity{
     private AudioManager mManager;
     private double mVolPer = 0.1;
 
+    @Bind(R.id.imageView_dance)
+    ImageView mImageViewDance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,11 @@ public class DanceActivity extends Activity{
     @OnClick(R.id.button_play)
     public void onClickButton(View v) {
         startBGM();
+
+        Drawable drawable= mImageViewDance.getDrawable();
+        if (drawable instanceof AnimationDrawable) {
+            ((AnimationDrawable) drawable).start();
+        }
     }
 
     @OnClick(R.id.button_plus)
