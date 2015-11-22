@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:background="#FFC800"
+    android:gravity="bottom"
     tools:context="jp.kfujine.oadc.MapActivity">
-    <TextView
-        android:id="@+id/textView_length"
-        android:layout_height="match_parent"
+    <ImageView
+        android:id="@+id/imageView_moji"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/tikaiyssa"
+        android:scaleType="fitCenter"
+        />
+    <ImageView
+        android:id="@+id/imageView_dance"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/dance_anime"
+        android:scaleType="fitEnd"
 
-        ></TextView>
+        />
 
-</FrameLayout>
+</LinearLayout>
