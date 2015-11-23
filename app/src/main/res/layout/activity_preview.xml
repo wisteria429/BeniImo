@@ -12,14 +12,16 @@
     <ImageView
         android:id="@+id/imageView_preview"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="400dp"
         />
 
     <Button
         android:id="@+id/button_send"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:text="OK"
+        android:background="@drawable/button_ok"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         />
 
 

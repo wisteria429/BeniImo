@@ -63,6 +63,7 @@ public class DanceActivity extends Activity{
         mPartnerLat = intent.getDoubleExtra(BUNDLE_KEY_LAT, 0);
         mPartnerLon= intent.getDoubleExtra(BUNDLE_KEY_LON, 0);
 
+        startDanceAnim(-1);
 
         try {
             mSocket = IO.socket("http://36.55.240.249:8888");
@@ -104,7 +105,7 @@ public class DanceActivity extends Activity{
     @OnClick(R.id.imageView_dance)
     public void onClickDance(View v) {
         startUriAnim();
-        startDanceAnim();
+        startDanceAnim(R.drawable.dance_anime);
         startBGM();
     }
 
@@ -119,9 +120,7 @@ public class DanceActivity extends Activity{
 
 
     private void startBGM() {
-        if (mPlayer.isPlaying()) {
-            mPlayer.stop();
-        }else {
+        if (!mPlayer.isPlaying()) {
             mPlayer.start();
         }
     }
@@ -129,21 +128,17 @@ public class DanceActivity extends Activity{
         Drawable drawable = getResources().getDrawable(R.drawable.uri_anim);
         mImageViewUri.setImageDrawable(drawable);
         if(drawable instanceof AnimationDrawable) {
-            if (((AnimationDrawable) drawable).isRunning()) {
-                ((AnimationDrawable) drawable).stop();
-            } else {
-                ((AnimationDrawable) drawable).start();
-            }
+            ((AnimationDrawable) drawable).start();
         }
     }
-    private void startDanceAnim() {
+    private void startDanceAnim(int res) {
+        if (res != -1) {
+            mImageViewDance.setImageDrawable(getResources().getDrawable(res));
+        }
         Drawable drawable = mImageViewDance.getDrawable();
         if(drawable instanceof AnimationDrawable) {
-            Log.d(TAG ,"anim_drawable");
-            if (((AnimationDrawable) drawable).isRunning()) {
-                Log.d(TAG ,"anim_stop");
-                ((AnimationDrawable) drawable).stop();
-            } else {
+            Log.d(TAG, "anim_drawable");
+            if (!((AnimationDrawable) drawable).isRunning()) {
                 Log.d(TAG ,"anim_start");
                 ((AnimationDrawable) drawable).start();
             }
@@ -162,6 +157,8 @@ public class DanceActivity extends Activity{
         Log.d(TAG, "flow");
         final float[] results = new float[3];
         try {
+            lat = Math.ceil(lat * 100) /100;
+            lon = Math.ceil(lon * 100) /100;
             Location.distanceBetween(
                     mPartnerLat,
                     mPartnerLon,

@@ -31,16 +31,16 @@ public class MenuActivity extends AppCompatActivity {
     @OnClick(R.id.button_okinawa)
     public void buttonOkinawa(View view) {
         Intent intent = new Intent();
-        /*
         intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.addCategory(Intent.CATEGORY_DEFAULT);
         startActivityForResult(intent, REQ_CAMERA);
-        */
 
+        /*
         intent.setClass(this, DanceActivity.class);
         Bundle b = DanceActivity.createIntentBundle(30.0, 135.0);
         intent.putExtras(b);
         startActivity(intent);
+        */
     }
 
     @OnClick(R.id.button_travel)
